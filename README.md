@@ -2,8 +2,8 @@
 
 Anggota Kelompok:
 - G1A020036 - Fadhilla Ilham Robbani
-- G1A021 
-- G1A021
+- G1A022 
+- G1A022
 
 ## ini penjelasan versi gpt sebagai referensi aj (tolong diedit lg ntar yo dilaporan)
 
