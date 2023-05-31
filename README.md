@@ -8,19 +8,27 @@ Anggota Kelompok:
 ##ini penjelasan versi gpt sebagai referensi aj (diedit lg ntar yo)
 
 
-`import random`
+```py
+    import random
+```
 Baris ini mengimpor modul random yang akan digunakan untuk memilih kata secara acak dari daftar kata.
 
-`class Hangman:
+
+
+```py
+class Hangman:
     def __init__(self):
         self.word_list = ["python", "hangman", "computer", "programming", "game", "openai"]
         self.chosen_word = random.choice(self.word_list)
         self.guessed_letters = []
         self.tries = 6
-`
+```
 Kode ini mendefinisikan kelas Hangman. Konstruktor kelas __init__ menginisialisasi atribut-atribut seperti word_list (daftar kata yang mungkin), chosen_word (kata yang dipilih secara acak dari daftar), guessed_letters (daftar huruf yang telah ditebak), dan tries (jumlah kesempatan yang tersisa).
 
-`    def play(self):
+
+
+```py   
+    def play(self):
         while self.tries > 0:
             word_status = ""
             for letter in self.chosen_word:
@@ -56,7 +64,7 @@ Kode ini mendefinisikan kelas Hangman. Konstruktor kelas __init__ menginisialisa
         else:
             self.display_hangman()
             print("Game over! The word was", self.chosen_word)
-`
+```
 
 Metode play digunakan untuk menjalankan permainan Hangman. Selama tries (jumlah kesempatan yang tersisa) lebih besar dari 0, permainan akan berlanjut.
 
@@ -67,7 +75,8 @@ Jika word_status sama dengan chosen_word, artinya pemain berhasil menebak seluru
 Jika tries habis (sudah tidak ada kesempatan lagi), pesan "Game over! The word was" akan ditampilkan, diikuti dengan kata yang benar. Loop akan selesai dengan else.
 
 
-`    def display_hangman(self):
+```py    
+    def display_hangman(self):
         hangman_states = [
             """
                _______
@@ -86,14 +95,15 @@ Jika tries habis (sudah tidak ada kesempatan lagi), pesan "Game over! The word w
         ]
 
         print(hangman_states[6 - self.tries])
-`
+```
 
 Metode display_hangman menggunakan list hangman_states yang berisi kode ASCII art untuk setiap state hangman. Sesuai dengan nilai tries, kode ASCII art yang sesuai akan dipilih dan ditampilkan menggunakan perintah print(hangman_states[6 - self.tries]).
 
 
-`game = Hangman()
+```py
+game = Hangman()
 game.play()
-`
+```
 
 Pada bagian akhir kode, sebuah objek game dibuat dari kelas Hangman, dan metode play dipanggil untuk memulai permainan. Ini menjalankan logika permainan Hangman dengan memanfaatkan kelas Hangman dan metode yang ada di dalamnya.
 
