@@ -5,7 +5,7 @@ Anggota Kelompok:
 - G1A021 
 - G1A021
 
-##ini penjelasan versi gpt sebagai referensi aj (diedit lg ntar yo)
+## ini penjelasan versi gpt sebagai referensi aj (tolong diedit lg ntar yo dilaporan)
 
 
 ```py
