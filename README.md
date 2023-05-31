@@ -1,0 +1,6 @@
+# TUGAS UAS MATA KULIAH PEMROGRAMAN BERBASIS OBJEK
+
+Anggota Kelompok:
+- G1A020036 - Fadhilla Ilham Robbani
+- G1A021 
+- G1A021
