@@ -5,60 +5,60 @@ Anggota Kelompok:
 - G1A022028 - Damianus Christopher Samosir 
 - G1A022080 - M Satria Halim
 
-## Penjelasan Source Code (Penjelasan di tiap baris ada dalam file Hangman.py dan selengkapnya ada di Laporan)
+## Penjelasan Source Code
 
 
 ```py
-import random
+import random # Mengimpor standard library random untuk membantu membuat random choice
 
-class Hangman:
+class Hangman: # Membuat kelas Hangman
     def __init__(self):
-        self.word_list = ["python", "hangman", "computer", "programming", "game", "openai"]
-        self.chosen_word = random.choice(self.word_list)
-        self.guessed_letters = []
-        self.tries = 6
+        self.word_list = ["python", "hangman", "pohon", "programming", "gitar", "kertas"]  # Daftar kata yang mungkin
+        self.chosen_word = random.choice(self.word_list)  # Memilih kata secara acak dari word_list
+        self.guessed_letters = []  # Daftar huruf yang sudah ditebak
+        self.tries = 6  # Jumlah kesempatan yang tersedia
 ```
 Kode program di atas adalah implementasi permainan "Hangman" dalam Python. Pada baris pertama, kami mengimpor pustaka standar random. Pustaka ini akan digunakan untuk membantu dalam memilih kata secara acak. Kemudian, kami mendefinisikan sebuah kelas bernama Hangman. Kelas ini akan merepresentasikan permainan Hangman dan menyimpan semua variabel dan metode yang diperlukan. Di dalam kelas Hangman, kami memiliki metode __init__. Metode ini merupakan konstruktor yang akan dijalankan saat sebuah objek dari kelas `Hangman` dibuat. Pada metode __init__, terdapat atribut word_list yang merupakan sebuah daftar (list) yang berisi beberapa kata yang mungkin akan digunakan dalam permainan. Kata-kata ini telah ditentukan terlebih dahulu dalam kode. Untuk memilih kata secara acak dari daftar word_list menggunakan fungsi random.choice. Kata yang dipilih akan disimpan dalam atribut `chosen_word`. Lalu setelah itu, kami membuat atribut guessed_letters yang merupakan sebuah daftar kosong. Di sinilah kami akan menyimpan huruf-huruf yang sudah ditebak oleh pemain. Kemudian yang terakhir, kami membuat atribut tries yang merupakan sebuah angka. Atribut ini akan menyimpan jumlah kesempatan yang tersisa bagi pemain untuk menebak kata. Dalam kode ini, kami memberi pemain 6 kesempatan. Setiap kali pemain menebak salah, nilai atribut tries akan dikurangi satu. Jika pemain gagal menebak kata dalam enam kesempatan, pemain kalah.
 
 
 
 ```py   
-    def play(self):
-        while self.tries > 0:
-            word_status = ""
+     def play(self): # Membuat fungsi play
+        while self.tries > 0:  # Selama masih ada kesempatan
+            word_status = ""  # Variabel word_status untuk menyimpan status kata yang sedang ditebak
             for letter in self.chosen_word:
-                if letter in self.guessed_letters:
-                    word_status += letter
+                if letter in self.guessed_letters:  # Jika huruf sudah ditebak
+                    word_status += letter  # Tambahkan huruf ke status kata atau variabel word_status
                 else:
-                    word_status += "_"
+                    word_status += "_"  # Tambahkan garis bawah untuk huruf yang belum ditebak
 
-            if word_status == self.chosen_word:
-                print("Congratulations! You guessed the word:", self.chosen_word)
-                break
+            if word_status == self.chosen_word:  # Jika status kata sama dengan kata yang dipilih
+                print("Congratulations! You guessed the word:", self.chosen_word)  # Tampilkan pesan berhasil menebak
+                break  # Hentikan permainan
 
-            self.display_hangman()
-            print("Guess the word:", word_status)
-            print("Tries left:", self.tries)
+            self.display_hangman()  # Tampilkan state hangman
+            print("Guess the word:", word_status)  # Tampilkan status kata yang sedang ditebak
+            print("Tries left:", self.tries)  # Tampilkan jumlah kesempatan yang tersisa
 
-            guess = input("Enter a letter: ").lower()
+            guess = input("Enter a letter: ").lower()  # Minta pemain memasukkan huruf tebakan
 
-            if len(guess) != 1:
-                print("Please enter a single letter.")
-                continue
+            if len(guess) != 1:  # Jika pemain memasukkan lebih dari satu huruf
+                print("Please enter a single letter.")  # Tampilkan pesan kesalahan
+                continue  # Lanjut ke iterasi berikutnya
 
-            if guess in self.guessed_letters:
-                print("You've already guessed that letter.")
-                continue
+            if guess in self.guessed_letters:  # Jika huruf sudah ditebak sebelumnya
+                print("You've already guessed that letter.")  # Tampilkan pesan kesalahan
+                continue  # Lanjut ke iterasi berikutnya
 
-            if guess not in self.chosen_word:
-                print("Wrong guess!")
-                self.tries -= 1
+            if guess not in self.chosen_word:  # Jika huruf tidak ada dalam kata yang dipilih
+                print("Wrong guess!")  # Tampilkan pesan bahwa tebakan salah
+                self.tries -= 1  # Kurangi jumlah kesempatan
 
-            self.guessed_letters.append(guess)
+            self.guessed_letters.append(guess)  # Tambahkan huruf tebakan ke daftar huruf yang sudah ditebak
 
-        else:
-            self.display_hangman()
-            print("Game over! The word was", self.chosen_word)
+        else:  # Jika loop while selesai tanpa break
+            self.display_hangman()  # Tampilkan state hangman terakhir
+            print("Game over! The word was", self.chosen_word)  # Tampilkan pesan bahwa permainan berakhir dan kata yang benar
 ```
 
  Kode di atas adalah implementasi dari fungsi `play()` dalam kelas `Hangman`. Fungsi ini bertanggung jawab untuk menjalankan permainan Hangman dengan mengatur jalannya permainan, berinteraksi dengan pemain, dan memberikan umpan balik setelah setiap tebakan. Pada baris pertama, kami mendefinisikan fungsi `play()` dengan menggunakan sintaks `def play(self):`. Ini mengindikasikan bahwa fungsi `play()` adalah metode dari kelas `Hangman`, dan parameter `self` mengacu pada objek saat ini yang sedang menggunakan metode tersebut. 
@@ -83,7 +83,7 @@ Jika perulangan `while` selesai tanpa pernyataan `break` terpanggil, berarti pem
 
 ```py    
     def display_hangman(self):
-        hangman_states = [
+        hangman_states = [  # Daftar state hangman dalam bentuk ASCII art
             """
                _______
               |/      |
@@ -97,10 +97,87 @@ Jika perulangan `while` selesai tanpa pernyataan `break` terpanggil, berarti pem
             |          |
             |__________|
             """,
-            # Kode ASCII art untuk state hangman lainnya
+            """
+               _______
+              |/      |
+              |      (_)
+              |      
+              |       
+              |      
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """,
+            """
+               _______
+              |/      |
+              |      (_)
+              |       |
+              |       |
+              |       
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """,
+            """
+               _______
+              |/      |
+              |      (_)
+              |      \\|
+              |       |
+              |       
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """,
+            """
+               _______
+              |/      |
+              |      (_)
+              |      \\|/
+              |       |
+              |       
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """,
+            """
+               _______
+              |/      |
+              |      (_)
+              |      \\|/
+              |       |
+              |      / 
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """,
+            """
+               _______
+              |/      |
+              |      (_)
+              |      \\|/
+              |       |
+              |      / \\
+              |
+             _|_
+            |   |______
+            |          |
+            |__________|
+            """
         ]
 
-        print(hangman_states[6 - self.tries])
+        print(hangman_states[6 -  self.tries]) # Mencetak state dari kode ASCII Hangman sesuai dengan kesempatan yang tersisa
 ```
 
 Kode di atas adalah implementasi dari fungsi `display_hangman()` dalam kelas `Hangman`. Fungsi ini bertanggung jawab untuk menampilkan representasi visual dari state hangman berdasarkan jumlah kesempatan yang tersisa. Pada awalnya, kami mendefinisikan sebuah daftar bernama `hangman_states`. Daftar ini berisi beberapa representasi visual dari state hangman dalam bentuk ASCII art. Setiap elemen dalam daftar adalah string yang mewakili gambar hangman pada setiap state yang berbeda. 
@@ -110,8 +187,9 @@ Selanjutnya, kami menggunakan pernyataan `print(hangman_states[6 - self.tries])`
 
 
 ```py
-game = Hangman()
-game.play()
+game = Hangman() #Mendefinisikan objek Hangman
+game.play() # Memanggil method play untuk memulai permainan
+
 ```
 
 Kode di atas terdiri dari dua baris yang berfungsi untuk membuat objek dari kelas `Hangman` dan memulai permainan Hangman. Pada baris pertama, kami mendefinisikan variabel `game` dan menginisialisasinya dengan objek dari kelas `Hangman` dengan menggunakan sintaks `Hangman()`. Dengan melakukan ini, kode membuat sebuah objek baru yang merupakan instance dari kelas `Hangman`. Variabel `game` akan mereferensikan objek ini sehingga kita dapat mengakses metode dan atribut dari kelas `Hangman`.
