@@ -2,17 +2,17 @@ import random # Mengimpor standard library random untuk membantu membuat random 
 
 class Hangman: # Membuat kelas Hangman
     def __init__(self):
-        self.word_list = ["python", "hangman", "computer", "programming", "game", "openai"]  # Daftar kata yang mungkin
-        self.chosen_word = random.choice(self.word_list)  # Memilih kata secara acak dari daftar kata
+        self.word_list = ["python", "hangman", "pohon", "programming", "gitar", "kertas"]  # Daftar kata yang mungkin
+        self.chosen_word = random.choice(self.word_list)  # Memilih kata secara acak dari word_list
         self.guessed_letters = []  # Daftar huruf yang sudah ditebak
         self.tries = 6  # Jumlah kesempatan yang tersedia
 
     def play(self): # Membuat fungsi play
         while self.tries > 0:  # Selama masih ada kesempatan
-            word_status = ""  # Variabel untuk menyimpan status kata yang sedang ditebak
+            word_status = ""  # Variabel word_status untuk menyimpan status kata yang sedang ditebak
             for letter in self.chosen_word:
                 if letter in self.guessed_letters:  # Jika huruf sudah ditebak
-                    word_status += letter  # Tambahkan huruf ke status kata
+                    word_status += letter  # Tambahkan huruf ke status kata atau variabel word_status
                 else:
                     word_status += "_"  # Tambahkan garis bawah untuk huruf yang belum ditebak
 
